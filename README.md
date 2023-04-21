@@ -1,2 +1,2 @@
-# qualificaitonChecker
-Used to check qualifications of staff memebers of lifesaving society pools.
+# Schedule Maker
+Used to create schedules based on available staff and other factors
