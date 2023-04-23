@@ -36,5 +36,4 @@ class Shift:
         self.staff_on_shift.append(name)
 
     def __str__(self):
-        print(self.start_time)
         return self.start_time.isoformat(timespec="minutes") + "-" + self.end_time.isoformat(timespec="minutes")

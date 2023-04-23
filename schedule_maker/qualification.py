@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import datetime, timedelta
 
 class Qualification:
     """
@@ -7,12 +7,12 @@ class Qualification:
     Used to store different qualification types
     """
 
-    def __init__(self, name: str, certification_date: date, expiry_date: date):
+    def __init__(self, name: str, certification_date: datetime, expiry_date: datetime= None):
         self.name = name
         self.certification_date = certification_date
-        self.expiry_date = expiry_date
+        self.expiry_date = expiry_date if expiry_date is not None else certification_date + timedelta(days=729)
 
-    def is_expired(self, date_delta: date=date.today()):
+    def is_expired(self, date_delta: datetime=None):
         """
         Returns a boolean if the qualification is expried form the date provided
 
@@ -22,4 +22,6 @@ class Qualification:
         Return:
             True if the qualifcation is expired based on the date_delta, False otherwise
         """
-        return self.expiry_date>= date_delta
+        if date_delta is None:
+            return self.expiry_date > datetime.today()
+        return self.expiry_date > date_delta
